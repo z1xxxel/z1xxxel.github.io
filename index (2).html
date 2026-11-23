@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Ксюше</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: sans-serif;
+            background: linear-gradient(to right, rgb(255, 182, 255), #ff89ef, rgb(255, 46, 210));
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease-in-out infinite alternate;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 100% 0%; }
+        }
+        .osnblock {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .flowers {
+            font-size: 48px;
+            margin-top: 5px;
+        }
+        h1 {
+            color: #b34180;
+            margin: 10px 0;
+            font-size: 32px;
+        }
+        p {
+            color: #6d445b;
+            font-size: 20px;
+            margin: 5px 0 0;
+        }
+        .qweewq {
+            max-width: min(300px, 80%);
+            width: auto;
+            border-radius: 25px;
+            z-index: 5;
+            margin-top: 10px;
+        }
+        .vosemrod, .fullbouqet {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .vosem {
+            font-size: 50px;
+            position: absolute;
+            background: linear-gradient(to right, rgb(255, 182, 255), #ff89ef, rgb(255, 46, 210));
+            background-size: 200% 200%;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.3;
+            animation: gradientAnimation 2s ease-in-out infinite alternate;
+        }
+        .vosem2 {
+            font-size: 45px;
+            position: absolute;
+            background: linear-gradient(to right, rgb(255, 93, 174), #f0464e, rgb(255, 0, 0));
+            background-size: 200% 200%;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.45;
+            animation: gradientAnimation1 3s ease-in-out infinite alternate;
+        }
+        .vosem3 {
+            font-size: 80px;
+            position: absolute;
+            background: linear-gradient(to right, rgb(255, 200, 255), #a05e97, rgb(148, 67, 67));
+            background-size: 200% 200%;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.3;
+            animation: gradientAnimation2 7s ease-in-out infinite alternate;
+        }
+        @keyframes gradientAnimation1 {
+            0% { background-position: 100% 30%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 30% 100%; }
+        }
+        @keyframes gradientAnimation2 {
+            0% { background-position: 70% 20%; }
+            50% { background-position: 30% 100%; }
+            100% { background-position: 20% 70%; }
+        }
+        .bouqet {
+            font-size: 50px;
+            position: absolute;
+            animation: gradientAnimation 2s ease-in-out infinite alternate, apacity 10s ease-in-out infinite alternate;
+        }
+        @keyframes apacity {
+            0% { opacity: 0.9; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.2; }
+        }
+        @media (max-width: 768px) {
+            .osnblock {
+                padding: 25px 15px;
+                max-width: 280px;
+            }
+            .flowers {
+                font-size: 42px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            p {
+                font-size: 18px;
+            }
+            .qweewq {
+                max-width: 250px;
+            }
+            .vosem, .vosem2, .vosem3, .bouqet {
+                font-size: 40px;
+            }
+            .vosem3 {
+                font-size: 60px;
+            }
+        }
+        @media (max-width: 480px) {
+            .osnblock {
+                padding: 20px 10px;
+                max-width: 240px;
+            }
+            .flowers {
+                font-size: 36px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .qweewq {
+                max-width: 180px;
+            }
+            .vosem, .vosem2, .bouqet {
+                font-size: 30px;
+            }
+            .vosem3 {
+                font-size: 45px;
+            }
+        }
+        .conv {
+            height: 100%;
+            width: 100%;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .active {
+            pointer-events: auto;
+            opacity: 1;
+        }
+        .convline {
+            filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.5));
+        }
+        .tik {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(70px, 15vw, 140px);
+            height: clamp(70px, 15vw, 140px);
+            border-radius: 50%;
+            background-color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 20;
+            font-size: clamp(12px, 4vw, 24px);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.7);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .tik:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        .tikd {
+            background: linear-gradient(to right, rgb(255, 255, 255), #ff00dd, rgb(255, 63, 245));
+            background-size: 200% 200%;
+            background-clip: text;
+            color: transparent;
+            animation: gradientAnimation2 7s ease-in-out infinite alternate;
+            -webkit-text-stroke: 1px pink;
+            font-size: inherit;
+            margin: 0;
+        }
+        .blesk {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .glitter {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            animation: sparkle infinite alternate ease-in-out;
+            opacity: 0.2;
+        }
+        @keyframes sparkle {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+                box-shadow: 0 0 15px currentColor;
+            }
+            100% {
+                opacity: 0.2;
+                transform: scale(0.5);
+            }
+        }
+        .dekor {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .dekordoch {
+            position: absolute;
+            font-size: 80px;
+            background: linear-gradient(to right, rgb(255, 200, 255), #a05e97, rgb(148, 67, 67));
+            background-size: 200% 200%;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.3;
+            animation: gradientAnimation4 4s ease-in-out infinite alternate;
+        }
+        .dekordoch2 {
+            max-width: 250px;
+            height: auto;
+            border-radius: 25px;
+            border: 1px solid purple;
+            object-fit: cover;
+            z-index: 20;
+        }
+        .dekordoch3 {
+            position: absolute;
+        }
+        @keyframes gradientAnimation4 {
+            0% { background-position: 70% 20%; opacity: 0.2;}
+            50% { background-position: 30% 100%; opacity: 1;}
+            100% { background-position: 20% 70%; opacity: 0.2;}
+        }
+        @media (max-width: 768px) {
+            .dekordoch {
+                font-size: 40px;
+            }
+            .dekordoch2 {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 480px) {
+            .dekordoch {
+                font-size: 30px;
+            }
+            .dekordoch2 {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="conv" id="converte">
+        <svg class="convline" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%">
+            <line x1="0" y1="0" x2="50" y2="50" stroke="black" stroke-width="0.2" />
+            <line x1="100" y1="0" x2="50" y2="50" stroke="black" stroke-width="0.2" />
+            <line x1="0" y1="100" x2="50" y2="50" stroke="black" stroke-width="0.2" />
+            <line x1="100" y1="100" x2="50" y2="50" stroke="black" stroke-width="0.2" />
+        </svg>
+        <div class="dekor" id="ddekor">
+            <div class="dekordoch" style="top: 80%; left: 5%; rotate: 55deg; animation-delay: 1s;">Ксюшк</div>
+            <div class="dekordoch3" style="top: 20%; left: 50%; transform: translate(-50%, -50%); rotate: 0deg; animation-delay: 1.4s;">
+                <img class="dekordoch2" src="db99cfbb33bebd5f6e1945f13abc1973.jpg" alt="Ксюшк">
+            </div>
+            <div class="dekordoch3" style="top: 81%; left: 50%; transform: translate(-50%, -50%); rotate: 0deg; animation-delay: 1.4s;">
+                <img class="dekordoch2" src="a9253aaec182dbd4691538c1bc83bbeb.jpg" alt="Ксюшк">
+            </div>
+            <div class="dekordoch" style="top: 45%; left: 15%; rotate: -40deg; animation-delay: 2s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 75%; left: 30%; rotate: 2deg; animation-delay: 1s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 80%; left: 70%; rotate: -2deg; animation-delay: 1.7s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 55%; left: 90%; rotate: 0deg; animation-delay: 1s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 5%; left: 30%; rotate: 55deg; animation-delay: 2.5s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 5%; left: 65%; rotate: -55deg; animation-delay: 2.1s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 35%; left: 75%; rotate: 6deg; animation-delay: 1.8s;">Ксюшк</div>
+            <div class="dekordoch" style="top: 30%; left: 5%; rotate: 0deg; animation-delay: 0.4s;">Ксюшк</div>
+        </div>
+        <div class="blesk" id="bleskki">
+            <i class="glitter" style="top:15%; left:10%; width:4px; height:4px; background:#ffd700; animation-delay:0s; animation-duration:2.5s;"></i>
+            <i class="glitter" style="top:60%; left:85%; width:6px; height:6px; background:#ffb6c1; animation-delay:1.2s; animation-duration:3s;"></i>
+            <i class="glitter" style="top:30%; left:80%; width:5px; height:5px; background:#ffffff; animation-delay:0.5s; animation-duration:2s;"></i>
+            <i class="glitter" style="top:85%; left:15%; width:7px; height:7px; background:#ffa07a; animation-delay:2s; animation-duration:4s;"></i>
+            <i class="glitter" style="top:45%; left:60%; width:3px; height:3px; background:#ffe4e1; animation-delay:1.8s; animation-duration:2.2s;"></i>
+            <i class="glitter" style="top:22%; left:92%; width:8px; height:8px; background:#ffd700; animation-delay:0.2s; animation-duration:3.5s;"></i>
+            <i class="glitter" style="top:68%; left:18%; width:5px; height:5px; background:#ffb6c1; animation-delay:2.5s; animation-duration:3s;"></i>
+            <i class="glitter" style="top:55%; left:72%; width:4px; height:4px; background:#ffa07a; animation-delay:1.5s; animation-duration:3.2s;"></i>
+            <i class="glitter" style="top:40%; left:30%; width:7px; height:7px; background:#ffe4e1; animation-delay:0.1s; animation-duration:2.4s;"></i>
+            <i class="glitter" style="top:78%; left:88%; width:5px; height:5px; background:#ffd700; animation-delay:2.2s; animation-duration:3.8s;"></i>
+            <i class="glitter" style="top:60%; left:5%; width:8px; height:8px; background:#ffa07a; animation-delay:0.3s; animation-duration:4s;"></i>
+            <i class="glitter" style="top:48%; left:95%; width:5px; height:5px; background:#ffe4e1; animation-delay:2.8s; animation-duration:2.9s;"></i>
+            <i class="glitter" style="top:25%; left:25%; width:7px; height:7px; background:#ffd700; animation-delay:1.1s; animation-duration:3.1s;"></i>
+            <i class="glitter" style="top:80%; left:70%; width:3px; height:3px; background:#ffb6c1; animation-delay:0.4s; animation-duration:2.3s;"></i>
+            <i class="glitter" style="top:35%; left:40%; width:6px; height:6px; background:#ffffff; animation-delay:2.3s; animation-duration:3.6s;"></i>
+            <i class="glitter" style="top:90%; left:20%; width:5px; height:5px; background:#ffa07a; animation-delay:1.3s; animation-duration:2.7s;"></i>
+            <i class="glitter" style="top:50%; left:55%; width:7px; height:7px; background:#ffe4e1; animation-delay:0.6s; animation-duration:3.9s;"></i>
+            <i class="glitter" style="top:18%; left:75%; width:4px; height:4px; background:#ffd700; animation-delay:2.1s; animation-duration:2.6s;"></i>
+            <i class="glitter" style="top:72%; left:12%; width:6px; height:6px; background:#ffb6c1; animation-delay:0.8s; animation-duration:3.4s;"></i>
+            <i class="glitter" style="top:33%; left:65%; width:5px; height:5px; background:#ffffff; animation-delay:1.6s; animation-duration:2s;"></i>
+            <i class="glitter" style="top:95%; left:82%; width:8px; height:8px; background:#ffa07a; animation-delay:2.4s; animation-duration:4.2s;"></i>
+            <i class="glitter" style="top:42%; left:8%; width:3px; height:3px; background:#ffe4e1; animation-delay:0.2s; animation-duration:2.5s;"></i>
+            <i class="glitter" style="top:58%; left:38%; width:7px; height:7px; background:#ffd700; animation-delay:1.7s; animation-duration:3s;"></i>
+            <i class="glitter" style="top:75%; left:28%; width:6px; height:6px; background:#ffffff; animation-delay:0.5s; animation-duration:2.8s;"></i>
+            <i class="glitter" style="top:65%; left:96%; width:4px; height:4px; background:#ffa07a; animation-delay:1.4s; animation-duration:3.2s;"></i>
+            <i class="glitter" style="top:98%; left:40%; width:5px; height:5px; background:#ffe4e1; animation-delay:2.9s; animation-duration:4s;"></i>
+        </div>
+        <div class="tik" id="startgame">
+            💐
+            <p class="tikd">тык</p>
+            💐
+        </div>
+    </div>
+    <div class="osnblock" id="blockk" hidden=true>
+        <h1 style="font-size: 111px;">Маме</h1>
+        <div class="flowers">🌹🌹🌹</div>
+    </div> 
+    <img class="qweewq" id="kotik" src="e8b5e636acc54f6571a44770a9606dbf.jpg" alt="Ксюшк" hidden=true>
+    <div class="vosemrod" id="vos" hidden=true>
+        <div class="vosem" style="top: 15%; left: 15%; rotate: 77deg; animation-delay: 1.2s;">Ксюшк</div>
+        <div class="vosem" style="top: 30%; left: 70%; rotate: -99deg; animation-delay: 1.5s;">Ксюшк</div>
+        <div class="vosem" style="top: 55%; left: 34%; rotate: 20deg; animation-delay: 1.6s;">Ксюшк</div>
+        <div class="vosem" style="top: 88%; left: 5%; rotate: 11deg; animation-delay: 1s;">Ксюшк</div>
+        <div class="vosem2" style="top: 75%; left: 88%; rotate: 5deg; animation-delay: 1.9s;">Ксюшк</div>
+        <div class="vosem2" style="top: 19%; left: 42%; rotate: -6deg; animation-delay: 1.7s;">Ксюшк</div>
+        <div class="vosem2" style="top: 88%; left: 19%; rotate: 0deg; animation-delay: 2s;">Ксюшк</div>
+        <div class="vosem2" style="top: 5%; left: 66%; rotate: -7deg; animation-delay: 2.5s;">Ксюшк</div>
+        <div class="vosem2" style="top: 4%; left: 85%; rotate: 9deg; animation-delay: 0.4s;">Ксюшк</div>
+        <div class="vosem2" style="top: 5%; left: 5%; rotate: 44deg; animation-delay: 0.7s;">Ксюшк</div>
+        <div class="vosem2" style="top: 50%; left: 9%; rotate: -23deg; animation-delay: 1s;">Ксюшк</div>
+        <div class="vosem2" style="top: 89%; left: 70%; rotate: -6deg; animation-delay: 0.2s;">Ксюшк</div>
+        <div class="vosem3" style="top: 50%; left: 89%; rotate: 11deg; animation-delay: 1.5s;">Ксюшк</div>
+        <div class="vosem3" style="top: 5%; left: 30%; rotate: 2deg; animation-delay: 2.3s;">Ксюшк</div>
+        <div class="vosem3" style="top: 30%; left: 20%; rotate: 0deg; animation-delay: 2.1s;">Ксюшк</div>
+        <div class="vosem3" style="top: 90%; left: 40%; rotate: 0deg; animation-delay: 2.7s;">Ксюшк</div>
+        <div class="vosem3" style="top: 47%; left: 62%; rotate: 0deg; animation-delay: 1.2s;">Ксюшк</div>
+        <div class="vosem3" style="top: 23%; left: 86%; rotate: -55deg; animation-delay: 1s;">Ксюшк</div>
+    </div>
+    <div class="fullbouqet" id="bouqet" hidden>
+        <div class="bouqet" style="top: 8%; left: 20%; rotate: 0deg; animation-delay: 1.5s">🌷</div>
+        <div class="bouqet" style="top: 5%; left: 50%; rotate: 0deg; animation-delay: 1.2s">🌹</div>
+        <div class="bouqet" style="top: 55%; left: 80%; rotate: 0deg; animation-delay: 1s">❤️</div>
+        <div class="bouqet" style="top: 65%; left: 15%; rotate: 0deg; animation-delay: 0.4s">💐</div>
+        <div class="bouqet" style="top: 85%; left: 93%; rotate: 0deg; animation-delay: 0.7s">🌷</div>
+        <div class="bouqet" style="top: 6%; left: 92%; rotate: 0deg; animation-delay: 2s">💕</div>
+    </div>
+    <script>
+        const start = document.getElementById("startgame");
+        const pismo = document.getElementById("converte");
+        const block = document.getElementById("blockk");
+        const vossem = document.getElementById("vos");
+        const kot = document.getElementById("kotik");
+        const cvetochki = document.getElementById("bouqet");
+        start.addEventListener('click', () => {
+            pismo.classList.add('hidden');
+            block.removeAttribute('hidden');
+            vossem.removeAttribute('hidden');
+            kot.removeAttribute('hidden');
+            cvetochki.removeAttribute('hidden');
+        });
+    </script>
+</body>
+</html>
